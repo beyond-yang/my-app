@@ -1,0 +1,51 @@
+<div style="margin-bottom: 16px">
+  <input
+    nz-input
+    placeholder="请输入姓名搜索"
+    [(ngModel)]="searchValue"
+    (keydown)="onSearchKeydown($event)"
+    style="width: 200px; margin-right: 8px"
+  />
+  <button nz-button nzType="primary" (click)="onSearch()">搜索</button>
+  <button
+    nz-button
+    (click)="searchValue = ''; onSearch()"
+    style="margin-left: 8px"
+  >
+    重置
+  </button>
+  <button nz-button nzType="primary" (click)="addUser()" style="float: right">
+    添加用户
+  </button>
+</div>
+
+<nz-table #basicTable [nzData]="displayUsers" [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of displayUsers">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.age }}</td>
+      <td>
+        <button nz-button nzType="link" (click)="editUser(user)">编辑</button>
+        <button nz-button nzType="link" nzDanger (click)="deleteUser(user.id)">
+          删除
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-pagination
+  [nzPageIndex]="pageIndex"
+  [nzTotal]="total"
+  [nzPageSize]="pageSize"
+  (nzPageIndexChange)="onPageIndexChange($event)"
+>
+</nz-pagination>

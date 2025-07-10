@@ -1,0 +1,87 @@
+// 引入 ng-zorro 的样式（如果还没引入）
+@import "ng-zorro-antd/ng-zorro-antd.min.css";
+
+// 全局基础样式
+body {
+  font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    Arial, sans-serif;
+  background: #f5f6fa;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+// 让页面内容居中显示
+.app-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 32px 24px;
+}
+
+// 表格样式优化
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  margin-bottom: 16px;
+}
+
+th,
+td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+}
+
+th {
+  background: #fafafa;
+  font-weight: 600;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+// 按钮间距
+button,
+.ant-btn {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+// 分页居中
+.ant-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+// 表单输入美化
+input,
+.ant-input {
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  padding: 6px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+.ant-input:focus {
+  border-color: #1890ff;
+}
+
+// 响应式
+@media (max-width: 600px) {
+  .app-container {
+    padding: 12px 4px;
+  }
+  th,
+  td {
+    padding: 8px 4px;
+  }
+}
