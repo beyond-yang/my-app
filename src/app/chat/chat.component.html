@@ -1,0 +1,50 @@
+<div class="chat-container">
+  <!-- 消息列表区域 -->
+  <div class="chat-messages">
+    <div
+      *ngFor="let message of messages"
+      class="message-item"
+      [ngClass]="message.isOwner ? 'own-message' : 'other-message'"
+    >
+      <div class="message-bubble">
+        <!-- 消息内容 -->
+        <div *ngIf="!message.isRecalled" class="message-content">
+          {{ message.content }}
+        </div>
+
+        <!-- 撤回消息显示 -->
+        <div *ngIf="message.isRecalled" class="recalled-message">
+          消息已撤回
+        </div>
+
+        <!-- 消息信息 -->
+        <div class="message-info">
+          <span>{{ message.sender }}</span>
+          <span>{{ message.timestamp | date : "HH:mm" }}</span>
+
+          <!-- 撤回按钮 - 只有自己的消息且未撤回才显示 -->
+          <button
+            *ngIf="message.isOwner && !message.isRecalled"
+            class="recall-btn"
+            (click)="recallMessage(message.id)"
+          >
+            撤回
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 输入区域 -->
+  <div class="chat-input">
+    <input
+      type="text"
+      [(ngModel)]="newMessage"
+      (keyup.enter)="sendMessage()"
+      placeholder="请输入消息..."
+    />
+    <button (click)="sendMessage()">发送</button>
+    <!-- 测试用：模拟接收消息 -->
+    <button (click)="simulateReceiveMessage()">模拟接收</button>
+  </div>
+</div>
